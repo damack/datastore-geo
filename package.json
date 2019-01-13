@@ -1,0 +1,29 @@
+{
+  "name": "datastore-geo",
+  "version": "1.0.0",
+  "description": "Geo Library for google-cloud datastore",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damack/datastore-geo.git"
+  },
+  "author": "damack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/damack/datastore-geo/issues"
+  },
+  "homepage": "https://github.com/damack/datastore-geo#readme",
+  "dependencies": {
+    "nodes2ts": "^1.1.10"
+  },
+  "peerDependencies": {
+    "@google-cloud/datastore": "^2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
