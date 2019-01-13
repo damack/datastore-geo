@@ -105,7 +105,12 @@ describe('GeoDataManager', () => {
             runQuery() {
                 called = true;
                 return new Promise((resolve) => {
-                    resolve([[], { moreResults: 'NO_MORE_RESULTS' }]);
+                    resolve([[{
+                        geoPoint: {
+                            latitude: 49.403031,
+                            longitude: 8.6240269
+                        }
+                    }], { moreResults: 'NO_MORE_RESULTS' }]);
                 });
             }
         };
@@ -182,6 +187,33 @@ describe('GeoDataManager', () => {
             latitude: 1,
             longitude: 50
         }, { name: 'test' });
+
+        expect(called).to.be.true;
+    });
+    it('Delete geodata', () => {
+        let called = false;
+
+        const datastore = {
+            int(val) {
+                return parseInt(val);
+            },
+            key(val) {
+                return {
+                    namespace: val.namespace,
+                    id: val.path[1],
+                    kind: val.path[0]
+                }
+            },
+            delete(args) {
+                called = true;
+                expect(args).to.deep.equal({ namespace: 'ntest', "id": 1, kind: 'test' });
+            }
+        };
+        const geoDataManager = new GeoDataManager(datastore, {
+            namespace: 'ntest',
+            table: 'test'
+        });
+        geoDataManager.delete(1);
 
         expect(called).to.be.true;
     });
