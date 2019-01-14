@@ -6,6 +6,7 @@ node_js:
   - 9
   - 8
 install:
-  - npm install -g codecov nyc
+  - npm install -g codecov nyc mocha
+  - npm install
 script:
-  - nyc --reporter lcovonly ./node_modules/mocha/bin/_mocha test/**/*.js
+  - nyc --reporter lcovonly mocha test/**/*.js
