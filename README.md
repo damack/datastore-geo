@@ -27,7 +27,7 @@ const datastore = new Datastore({
 Next you must create an instance of GeoDataManager to query and write to the table, but you must always provide a `Datastore` instance and a table name.
 
 ```js
-const geoDataManager = require('datastore-geo');
+const GeoDataManager = require('datastore-geo');
 const geoDataManager = new GeoDataManager(datastore, {
     hashKeyLength: 2,
     namespace: 'optional',
