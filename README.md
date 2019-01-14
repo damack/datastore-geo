@@ -71,8 +71,8 @@ geoDataManager.create({
 }, [{
     name: 'name',
     value: 'test',
-}]).then(() => {
-    console.log("saved");
+}]).then(id => {
+    console.log(`Saved: ${id}`);
 });
 ```
 

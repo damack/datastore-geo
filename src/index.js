@@ -44,7 +44,7 @@ class GeoDataManager {
         results.forEach(queryOutputs => queryOutputs.forEach(queryOutput => mergedResults.push(queryOutput)));
         return S2Manager.filterByRectangle(mergedResults, latLngRect)
     }
-    create(geoPoint, data) {
+    async create(geoPoint, data) {
         const geohash = S2Manager.generateGeohash(geoPoint);
         const hashKey = S2Manager.generateHashKey(geohash, this.hashKeyLength);
 
@@ -61,13 +61,13 @@ class GeoDataManager {
             value: this.datastore.geoPoint(geoPoint),
             excludeFromIndexes: true,
         });
-        return this.datastore.save({
-            key: this.datastore.key({
-                namespace: this.namespace,
-                path: [this.table]
-            }),
-            data
-        })
+
+        const key = this.datastore.key({
+            namespace: this.namespace,
+            path: [this.table]
+        });
+        await this.datastore.save({ key, data });
+        return key.id;
     }
     async update(id, geoPoint, data) {
         const transaction = this.datastore.transaction();
