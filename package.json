@@ -1,6 +1,6 @@
 {
   "name": "datastore-geo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Geo Library for google-cloud datastore",
   "main": "src/index.js",
   "scripts": {
