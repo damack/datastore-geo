@@ -1,10 +1,18 @@
 language: node_js
 cache: npm
 node_js:
-  - "10"
+- '10'
 install:
-  - npm install -g codecov nyc mocha
-  - npm install
+- npm install -g codecov nyc mocha
+- npm install
 script:
-  - nyc --reporter lcovonly mocha test/**/*.js
-  - codecov
+- nyc --reporter lcovonly mocha test/**/*.js
+- codecov
+deploy:
+  provider: npm
+  email: seb.wagner_@gmx.de
+  api_key:
+    secure: e3efpUelC+L5caKN8TWmD+9O1J5okWpIRzbW9EMNeNZPUkXckQSiHOnDS1kIyTl4kn2XZE6knz2vkz77gN4FHPfc/0BwuBrOlwCMJn5TcRhp7hdy4GFo6Bqw64YNpE01rmXKqmHFbdJO0JFXo03g7NpC7ujzBDeDeA/f9jfX6SOCYmAivUd7aW5YyA08oRAPCW//ss4jAYjhiJ1hGAJBpoFj+uY9MI97ix+k0abzSE2a/+VYlhGBsNpARAmbaywL/jdIlznidPVUbSZhRajvQ4EhajdqabPHsq9UmaXp4iMqEGRoB2PWodaq3D0bsG0LdgP8QLgkliKOwp03yLq+3vt5/qs0fuosnFoFUroA/Equ/Ht7i2K/bYvDDTFmnZuuxi71QH7QGoXhEQpwwirfp7IEeTzcDA0RDE5IbenlfppKilwZEWoyniIQ8vpK6hJQufE3PL34k7ygieQdSq/QwknSkLR+E4wOmargR/Kd0M8SHBm3lX8ZtUi8/FeJt5QJykuaoAShubnfoUdwmla4AsfgXzzteKaKeSnYOv1v9Fz2/tJM/FUaGnXvee5O6KoPuxU4gjyakzRjwiiloFGdCExvqZkUTLRVAG+WDqTQtP1QPG1HZ7L93bHaXhrKqK2CMGXg1eyvAhhxAipryWMyuNLCoVgVT/y4tczve3zbTII=
+  on:
+    tags: true
+    repo: damack/datastore-geo
